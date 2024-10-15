@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from "react"; // Import useEffect and useState
 import GradientComponent from "@/components/GradientComponent"; // Ensure this path is correct
+import ContentBoxes from "@/components/ContentBoxes"; // Ensure this path is correct
 
 // Main component for the Home page
 export default function Home() {
@@ -17,9 +18,10 @@ export default function Home() {
   return (
     <>
       <GradientComponent />
-      <div>
-        <h1>SWERATE</h1>
+      <div className="flex items-center justify-center">
+        <h1 className="text-4xl font-bold">SWERATE</h1>
       </div>
+      <ContentBoxes />
     </>
   );
 }
