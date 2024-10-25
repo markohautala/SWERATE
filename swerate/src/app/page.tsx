@@ -19,7 +19,7 @@ export default function Home() {
     <>
       <GradientComponent />
       <div className="flex items-center justify-center">
-        <h1 className="text-4xl font-bold">SWERATE</h1>
+        <h1 className="text-4xl font-bold text-black">SWERATE</h1>
       </div>
       <ContentBoxes />
     </>
