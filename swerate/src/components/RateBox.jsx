@@ -1,13 +1,13 @@
-// Mark this file as a Client Component
 "use client"; // Add this line at the top
 
 import React from 'react';
 
 const RateBox = () => {
   return (
-    <div className="flex items-center justify-center">
-      <div className="bg-white/30 backdrop-blur-lg border border-white/30 rounded-lg w-52 h-52 flex items-center justify-center">
-        <span className="text-black text-6xl font-bold">2,75%</span> {/* Change text-white to text-black */}
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="bg-white/20 backdrop-blur-lg border border-white/20 rounded-lg p-12 m-4 flex flex-col items-center justify-center">
+        <span className="text-white text-6xl font-bold">SWESTR RATE: 2,75%</span>
+        <p className="text-white mt-4">Källa: Sveriges riksbank</p> {/* Add margin-top for spacing */}
       </div>
     </div>
   );
