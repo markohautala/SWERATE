@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
+import MyChart from "./MyChart"; // Import the chart component
 
 const RateBox = () => {
-  const [rate, setRate] = useState(null);
+  const [rates, setRates] = useState([]); // Store all rates
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fromDate = "2024-11-14"; // Define your fromDate here
+  // Get today's date and calculate the date 30 days ago
+  const today = new Date();
+  const toDate = today.toISOString().split("T")[0]; // Format as YYYY-MM-DD
+  const fromDate = new Date(today);
+  fromDate.setDate(today.getDate() - 30);
+  const fromDateString = fromDate.toISOString().split("T")[0]; // Format as YYYY-MM-DD
 
   // Fetch SWESTR data from the Riksbank API
   const fetchSwestrData = async () => {
@@ -13,31 +19,34 @@ const RateBox = () => {
     setError(null);
 
     try {
-      // Corrected URL to call the proxy route
-      const url = `/api/swestr/v1/all/SWESTR?fromDate=${fromDate}`;
+      // Construct the URL to fetch data for the last 30 days
+      const url = `/api/swestr/v1/all/SWESTR?fromDate=${fromDateString}&toDate=${toDate}`;
       console.log("Constructed URL:", url); // For debugging
 
-      // Fetch data from the API through the proxy
+      // Fetch data from the API
       const response = await fetch(url, {
         headers: {
           "Cache-Control": "no-cache", // Required header
         },
       });
 
-      // Check if the response is successful (status 200)
       if (!response.ok) {
         throw new Error(
           `Failed to fetch data: ${response.status} ${response.statusText}`
         );
       }
 
-      // Parse the JSON response
       const data = await response.json();
       console.log("Fetched Data:", data); // For debugging
 
-      // Check if the data array is not empty
+      // Prepare the data for charting
       if (data && data.length > 0) {
-        setRate(data[0].rate); // Set the rate from the first item in the data array
+        // Map the data into a format for the chart
+        const formattedData = data.map((item) => ({
+          name: item.date, // The date for the x-axis
+          uv: item.rate,   // The rate for the y-axis
+        }));
+        setRates(formattedData);
       } else {
         throw new Error("No rate data available for the selected date.");
       }
@@ -45,28 +54,25 @@ const RateBox = () => {
       console.error("Error occurred while fetching:", err.message);
       setError(err.message || "An unknown error occurred.");
     } finally {
-      setLoading(false); // Set loading to false after the API call is complete
+      setLoading(false);
     }
   };
 
-
-  // Use useEffect to trigger the data fetch on component mount
   useEffect(() => {
-    fetchSwestrData(); // Fetch SWESTR data when the component mounts
+    fetchSwestrData();
   }, []);
 
-  // Render the component
   return (
     <div className="rate-box">
       <h1>SWESTR Interest Rate</h1>
 
       {loading && <p>Loading data...</p>}
-
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      {rate !== null && !loading && !error && (
+      {rates.length > 0 && !loading && !error && (
         <div>
-          <h2>Rate on {fromDate}: {rate}%</h2>
+          <h2>SWESTR Rate Chart for Last 30 Days</h2>
+          <MyChart data={rates} /> {/* Pass the rates data to MyChart */}
         </div>
       )}
     </div>

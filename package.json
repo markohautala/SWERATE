@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "http-proxy-middleware": "^3.0.3"
+    "http-proxy-middleware": "^3.0.3",
+    "recharts": "^2.13.3"
   }
 }
