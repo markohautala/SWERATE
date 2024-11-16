@@ -11,7 +11,7 @@ const ContentBoxes = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000); // Show loader for 3 seconds
+    }, 2000); // Show loader for 2 seconds
 
     // Cleanup the timer when the component unmounts
     return () => clearTimeout(timer);
