@@ -10,8 +10,8 @@ const MyChart = ({ data }) => {
           {/* Define linear gradient fills for areas */}
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#fff" stopOpacity={0.8} /> {/* Blue color */}
-              <stop offset="95%" stopColor="#11114e" stopOpacity={0} />
+              <stop offset="5%" stopColor="#9BD5B1" stopOpacity={0.8} /> {/* Blue color */}
+              <stop offset="95%" stopColor="#9BD5B1" stopOpacity={0} />
             </linearGradient>
           </defs>
 
@@ -27,7 +27,7 @@ const MyChart = ({ data }) => {
           <Legend />
 
           {/* Area for uv rate with the new color and gradient fill */}
-          <Area type="monotone" dataKey="uv" stroke="#000" fillOpacity={1} fill="url(#colorUv)" />
+          <Area type="monotone" dataKey="uv" stroke="#82ca9d" fillOpacity={1} fill="url(#colorUv)" />
         </AreaChart>
       </ResponsiveContainer>
     </div>
