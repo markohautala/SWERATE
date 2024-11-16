@@ -13,27 +13,35 @@ const GradientComponent = () => {
         const config = {
         colors: [
             {
-                color: '#B4B4B8',
+                color: '#f8f9fa',
                 enabled: true,
             },
             {
-                color: '#C7C8CC',
+                color: '#e9ecef',
                 enabled: true,
             },
             {
-                color: '#E3E1D9',
+                color: '#dee2e6',
                 enabled: true,
             },
             {
-                color: '#F2EFE5',
+                color: '#ced4da',
                 enabled: true,
             },
             {
-                color: '#a2d2ff',
-                enabled: false,
+                color: '#adb5bd',
+                enabled: true,
+            },
+            {
+                color: '#6c757d',
+                enabled: true,
+            },
+            {
+                color: '#495057',
+                enabled: true,
             },
             ],
-            speed: 4,
+            speed: 6,
             horizontalPressure: 4,
             verticalPressure: 6,
             waveFrequencyX: 2,

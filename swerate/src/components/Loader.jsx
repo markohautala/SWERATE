@@ -6,8 +6,8 @@ const Loading = () => {
       <Image
         src="/images/loader.gif" // Correct path to loader.gif in public/images
         alt="Loading..."
-        width={85} // Adjust width as needed
-        height={85} // Adjust height as needed
+        width={185} // Adjust width as needed
+        height={185} // Adjust height as needed
       />
     </div>
   );

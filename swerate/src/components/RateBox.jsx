@@ -63,7 +63,7 @@ const RateBox = () => {
   }, []);
 
   return (
-    <div className="rate-box">
+    <div className="rate-box w-full max-w-screen-xl mx-auto px-4"> {/* Increase width of parent */}
       <h1>SWESTR Interest Rate</h1>
 
       {loading && <p>Loading data...</p>}

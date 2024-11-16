@@ -1,4 +1,3 @@
-// Mark this file as a Client Component
 "use client"; // Add this line at the top
 
 import { useEffect, useState } from "react"; // Import useEffect and useState
@@ -18,8 +17,13 @@ export default function Home() {
   return (
     <>
       <GradientComponent />
-      <div className="flex items-center justify-center">
-        <h1 className="text-4xl font-bold text-black">SWERATE</h1>
+      <div className="flex items-center justify-center mt-4">
+        {/* Icon and text side by side */}
+        <h1 className="flex items-center text-4xl font-semibold text-black" style={{ fontFamily: 'Roboto Slab, sans-serif' }}>
+          {/* Material Icon */}
+          <span className="material-icons-outlined mr-3">finance_mode</span>
+          SWERATE
+        </h1>
       </div>
       <ContentBoxes />
     </>
