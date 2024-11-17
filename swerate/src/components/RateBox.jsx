@@ -44,7 +44,7 @@ const RateBox = () => {
         // Map the data into a format for the chart
         const formattedData = data.map((item) => ({
           name: item.date, // The date for the x-axis
-          uv: item.rate,   // The rate for the y-axis
+          swerate: item.rate,   // The rate for the y-axis
         }));
         setRates(formattedData);
       } else {

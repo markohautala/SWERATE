@@ -1,35 +1,85 @@
-import React from "react";
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import React, { useState } from "react";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import TailwindModal from "./TailwindModal"; // Import the modal component
 
 const MyChart = ({ data }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
+
   return (
-    <div className="bg-white bg-opacity-10 backdrop-blur-lg border-2 border-white border-opacity-30 rounded-xl p-6 shadow-lg my-6">
-      {/* Responsive Container for better responsiveness */}
+    <div className="relative bg-white bg-opacity-10 backdrop-blur-lg border-2 border-white border-opacity-30 rounded-xl p-6 shadow-lg my-6">
+      {/* Gear Icon */}
+      <div className="absolute top-4 right-4">
+        <button
+          onClick={() => setIsModalOpen(true)} // Open modal on click
+          className="text-gray-300 hover:text-gray-100 focus:outline-none"
+        >
+          <span
+            className="material-symbols-outlined"
+            style={{ fontSize: "40px" }}
+          >
+            settings
+          </span>
+        </button>
+      </div>
+
+      {/* Chart */}
       <ResponsiveContainer width="90%" height={400}>
         <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-          {/* Define linear gradient fills for areas */}
           <defs>
-            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#9BD5B1" stopOpacity={0.8} /> {/* Blue color */}
+            <linearGradient id="colorSwerate" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#9BD5B1" stopOpacity={0.8} />
               <stop offset="95%" stopColor="#9BD5B1" stopOpacity={0} />
             </linearGradient>
           </defs>
-
           {/* X Axis */}
-          <XAxis dataKey="name" />
+          <XAxis
+            dataKey="name"
+            stroke="#FFFFFF" // White text for the X axis
+            tick={{ fill: "#FFFFFF" }} // White color for tick labels
+          />
           {/* Y Axis */}
-          <YAxis domain={[1.5, 'auto']} />
+          <YAxis
+            domain={[1.5, "auto"]}
+            stroke="#FFFFFF" // White text for the Y axis
+            tick={{ fill: "#FFFFFF" }} // White color for tick labels
+          />
           {/* Cartesian Grid */}
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#444" /> {/* Subtle dark grid */}
           {/* Tooltip */}
-          <Tooltip />
+          <Tooltip
+            contentStyle={{
+              backgroundColor: "rgba(255, 255, 255, 0.1)", // Slightly transparent tooltip
+              border: "1px solid #FFFFFF",
+              color: "#FFFFFF",
+            }}
+            itemStyle={{ color: "#FFFFFF" }} // Tooltip text color
+          />
           {/* Legend */}
-          <Legend />
-
-          {/* Area for uv rate with the new color and gradient fill */}
-          <Area type="monotone" dataKey="uv" stroke="#82ca9d" fillOpacity={1} fill="url(#colorUv)" />
+          <Legend
+            wrapperStyle={{ color: "#FFFFFF" }} // White text for legend
+          />
+          {/* Area Chart */}
+          <Area
+            type="monotone"
+            dataKey="swerate" // Updated dataKey
+            stroke="#82ca9d"
+            fillOpacity={1}
+            fill="url(#colorSwerate)" // Updated gradient ID
+          />
         </AreaChart>
       </ResponsiveContainer>
+
+      {/* Modal */}
+      <TailwindModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };

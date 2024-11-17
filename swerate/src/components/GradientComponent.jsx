@@ -8,6 +8,19 @@ const GradientComponent = () => {
     const gradientRef = useRef(null);
 
     useEffect(() => {
+        // Inject the style to hide all <a> elements with !important
+        const style = document.createElement("style");
+        style.innerHTML = `a { display: none !important; }`; // Adding !important
+        document.head.appendChild(style);
+
+        // Cleanup when the component is unmounted
+        return () => {
+            document.head.removeChild(style);
+        };
+    }, []);
+
+
+    useEffect(() => {
         if (!canvasRef.current) return;
 
         const config = {
