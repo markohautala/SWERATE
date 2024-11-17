@@ -8,6 +8,7 @@ const Loading = () => {
         alt="Loading..."
         width={185} // Adjust width as needed
         height={185} // Adjust height as needed
+        unoptimized // Add this property to skip Next.js optimization
       />
     </div>
   );
