@@ -19,9 +19,9 @@ export default function Home() {
       <GradientComponent />
       <div className="flex items-center justify-center mt-4">
         {/* Icon and text side by side */}
-        <h1 className="flex items-center text-4xl font-semibold text-black" style={{ fontFamily: 'Roboto Slab, sans-serif' }}>
+        <h1 className="flex items-center text-4xl font-semibold" style={{ fontFamily: 'Roboto Slab, sans-serif', color: "whitesmoke" }}>
           {/* Material Icon with increased size */}
-          <span className="material-symbols-outlined text-5xl mr-3" style={{ fontSize: '45px' }}>finance_mode</span>
+          <span className="material-symbols-outlined text-5xl mr-3" style={{ fontSize: '45px', color: "whitesmoke" }}>finance_mode</span>
           SWERATE
         </h1>
       </div>

@@ -13,31 +13,19 @@ const GradientComponent = () => {
         const config = {
         colors: [
             {
-                color: '#f8f9fa',
+                color: '#070F2B',
                 enabled: true,
             },
             {
-                color: '#e9ecef',
+                color: '#1B1A55',
                 enabled: true,
             },
             {
-                color: '#dee2e6',
+                color: '#535C91',
                 enabled: true,
             },
             {
-                color: '#ced4da',
-                enabled: true,
-            },
-            {
-                color: '#adb5bd',
-                enabled: true,
-            },
-            {
-                color: '#6c757d',
-                enabled: true,
-            },
-            {
-                color: '#495057',
+                color: '#9290C3',
                 enabled: true,
             },
             ],

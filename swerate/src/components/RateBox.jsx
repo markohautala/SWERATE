@@ -72,6 +72,7 @@ const RateBox = () => {
       {rates.length > 0 && !loading && !error && (
         <div>
           <h2>SWESTR Rate Chart for Last 30 Days</h2>
+          <h2>Källa / Source: Riksbanken</h2>
           <MyChart data={rates} /> {/* Pass the rates data to MyChart */}
         </div>
       )}
