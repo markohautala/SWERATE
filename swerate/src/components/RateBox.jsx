@@ -63,16 +63,19 @@ const RateBox = () => {
   }, []);
 
   return (
-    <div className="rate-box w-full max-w-screen-xl mx-auto px-4"> {/* Increase width of parent */}
-      <h1>SWESTR Interest Rate</h1>
+    <div className="rate-box w-full max-w-screen-xl mx-auto px-4">
+      {/* Container with increased width */}
+      <h4 className="text-white text-xl font-bold">SWESTR Interest Rate</h4>
 
-      {loading && <p>Loading data...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {loading && <p className="text-white">Loading data...</p>}
+      {error && <p className="text-red-500">{error}</p>}
 
       {rates.length > 0 && !loading && !error && (
         <div>
-          <h2>SWESTR Rate Chart for Last 30 Days</h2>
-          <h2>Källa / Source: Riksbanken</h2>
+          <h4 className="text-white text-lg font-semibold">
+            SWESTR Rate Chart for Last 30 Days
+          </h4>
+          <h4 className="text-white text-sm italic">Källa / Source: Riksbanken</h4>
           <MyChart data={rates} /> {/* Pass the rates data to MyChart */}
         </div>
       )}
@@ -80,4 +83,4 @@ const RateBox = () => {
   );
 };
 
-export default RateBox;
+export default RateBox;4
