@@ -32,8 +32,8 @@ const MyChart = ({ data }) => {
       </div>
 
       {/* Chart */}
-      <ResponsiveContainer width="90%" height={400}>
-        <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+      <ResponsiveContainer width="95%" height={450}>
+        <AreaChart data={data} margin={{ top: 10, right: 5, left: -30, bottom: 0 }}>
           <defs>
             <linearGradient id="colorSwerate" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#9BD5B1" stopOpacity={0.8} />
@@ -45,12 +45,15 @@ const MyChart = ({ data }) => {
             dataKey="name"
             stroke="#FFFFFF" // White text for the X axis
             tick={{ fill: "#FFFFFF" }} // White color for tick labels
+            tickLine={false}
+            style={{ fontSize: "12px" }}
           />
           {/* Y Axis */}
           <YAxis
-            domain={[1.5, "auto"]}
+            domain={[2.2, "auto"]}
             stroke="#FFFFFF" // White text for the Y axis
             tick={{ fill: "#FFFFFF" }} // White color for tick labels
+            style={{ fontSize: "15px" }}
           />
           {/* Cartesian Grid */}
           <CartesianGrid strokeDasharray="3 3" stroke="#444" /> {/* Subtle dark grid */}
@@ -72,6 +75,7 @@ const MyChart = ({ data }) => {
             type="monotone"
             dataKey="swerate" // Updated dataKey
             stroke="#82ca9d"
+            dot={true}
             fillOpacity={1}
             fill="url(#colorSwerate)" // Updated gradient ID
           />
